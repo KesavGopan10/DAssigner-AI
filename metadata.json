@@ -1,0 +1,8 @@
+{
+  "name": "DAssigner Ai",
+  "description": "An AI-powered design tool that generates stunning UI designs and corresponding HTML code from natural language prompts, supporting both text and voice input.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "prompt": ""
+}
