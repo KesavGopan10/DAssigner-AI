@@ -6,7 +6,7 @@ import ToastContainer from './components/Toast.tsx';
 import { type DesignOutput, type HistoryItem, type Toast, type ExampleItem, type Project } from './types.ts';
 import { initializeAiClient, createChatSession, sendMessageToChat, enhancePrompt as enhancePromptService, convertHtmlToFramework } from './services/geminiService.ts';
 import type { Chat } from '@google/genai';
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 
 // --- STATE AND REDUCER ---
 
