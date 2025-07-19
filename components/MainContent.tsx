@@ -3,7 +3,7 @@ import { type ExampleItem } from '../types.ts';
 import { useAppContext } from '../App.tsx';
 import VisualPreview from './VisualPreview.tsx';
 import CodePreview from './CodePreview.tsx';
-import { EyeIcon, CodeBracketIcon, SparklesIcon, DAssignerLogoIcon, Bars3Icon, Cog6ToothIcon, ComputerDesktopIcon, DeviceTabletIcon, DevicePhoneMobileIcon } from './icons/Icons.tsx';
+import { EyeIcon, CodeBracketIcon, SparklesIcon, DAssignerLogoIcon, Bars3Icon, Cog6ToothIcon, ComputerDesktopIcon, DeviceTabletIcon, DevicePhoneMobileIcon, XMarkIcon } from './icons/Icons.tsx';
 
 const inspirationExamples: ExampleItem[] = [
   {
@@ -313,13 +313,23 @@ const MainContent: React.FC = () => {
     <main className="lg:ml-96 flex-1 flex flex-col min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900">
       {/* Enhanced Mobile Header */}
       <header className="lg:hidden flex items-center justify-between p-4 border-b border-slate-200/50 dark:border-cyan-400/20 sticky top-0 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md z-50">
-        <button
-          onClick={onMenuClick}
-          className="p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-cyan-400/10 transition-all duration-200"
-          aria-label="Open menu"
-        >
-          <Bars3Icon className="w-6 h-6" />
-        </button>
+        {state.isSidebarOpen ? (
+          <button
+            onClick={() => dispatch({ type: 'SET_IS_SIDEBAR_OPEN', payload: false })}
+            className="p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-cyan-400/10 transition-all duration-200"
+            aria-label="Close menu"
+          >
+            <XMarkIcon className="w-6 h-6" />
+          </button>
+        ) : (
+          <button
+            onClick={onMenuClick}
+            className="p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-cyan-400/10 transition-all duration-200"
+            aria-label="Open menu"
+          >
+            <Bars3Icon className="w-6 h-6" />
+          </button>
+        )}
         
         <div className="flex items-center gap-3">
           <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-2 rounded-xl shadow-lg shadow-cyan-500/30">

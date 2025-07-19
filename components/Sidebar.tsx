@@ -8,7 +8,6 @@ import {
   MagicWandIcon,
   HistoryIcon,
   NewChatIcon,
-  XMarkIcon,
   UserIcon,
   Cog6ToothIcon,
   PencilIcon,
@@ -204,6 +203,20 @@ const Sidebar: React.FC = () => {
         </div>
       )}
 
+      {/* Mobile My Designs Button - Only visible on mobile */}
+      <div className="lg:hidden mb-4">
+        <button
+          onClick={() => setIsProjectsOpen(true)}
+          className="w-full flex items-center gap-3 p-3 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 dark:bg-cyan-500/10 dark:hover:bg-cyan-500/20 transition-colors text-cyan-700 dark:text-cyan-400 font-medium"
+        >
+          <FolderOpenIcon className="w-5 h-5 flex-shrink-0" />
+          <span>My Designs</span>
+          <div className="ml-auto bg-white/20 dark:bg-slate-800/50 rounded-full px-2 text-xs font-semibold">
+            {projects.length}
+          </div>
+        </button>
+      </div>
+
       {/* Main Content */}
       <div className="flex items-center justify-between gap-3 mb-4">
         <div className="flex items-center gap-3 flex-1 min-w-0">
@@ -299,19 +312,13 @@ const Sidebar: React.FC = () => {
               </div>
             )}
           </div>
+          {/* Show settings icon only in desktop view */}
           <button
             onClick={() => dispatch({ type: 'SET_IS_SETTINGS_OPEN', payload: true })}
-            className="p-2 rounded-md text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-cyan-400/10 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors tooltip tooltip-right"
+            className="p-2 rounded-md text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-cyan-400/10 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors tooltip tooltip-right hidden lg:block"
             data-tooltip="Settings"
           >
             <Cog6ToothIcon className="w-5 h-5" />
-          </button>
-          <button
-            onClick={() => dispatch({ type: 'SET_IS_SIDEBAR_OPEN', payload: false })}
-            className="p-2 rounded-md text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-cyan-400/10 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors lg:hidden"
-            aria-label="Close menu"
-          >
-            <XMarkIcon className="w-6 h-6" />
           </button>
         </div>
       </div>
@@ -443,11 +450,9 @@ const Sidebar: React.FC = () => {
             <MicrophoneIcon className="w-5 h-5" />
           </button>
         </div>
-
         {voiceError && (
           <p className="text-red-500 dark:text-red-400 text-xs mt-2">{voiceError}</p>
         )}
-
         <div className="mt-3 flex items-center justify-between">
           <div
             className="flex items-center gap-2 tooltip tooltip-right"
